@@ -6,20 +6,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.udemy.backendninja.model.Person;
+
 @Controller
 @RequestMapping("/hello")
 public class HelloFuckController {
 	
 	@GetMapping("/world")
 	public String helloFuck(Model model) {
-		model.addAttribute("name","Clemente");
+		model.addAttribute("person",new Person("Ene","30"));
 		return "helloworld";
 	}
 	
 	@GetMapping("/worldv")
 	public ModelAndView modelandview() {
 		ModelAndView mav = new	ModelAndView("helloworld");
-		mav.addObject("name","Celestino");
+		mav.addObject("person",new Person("Ano","69"));
 		return mav;
 	}
 }

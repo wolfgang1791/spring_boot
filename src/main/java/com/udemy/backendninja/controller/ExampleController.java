@@ -16,7 +16,7 @@ public class ExampleController {
 	//@GetMapping( "/example/primera")// funcion resumida
 	@RequestMapping(value = "/primera", method = RequestMethod.GET)
 	public String exampleString() {
-		System.out.print(view);
+	//	System.out.print(view);
 		return view;
 	}
 	
