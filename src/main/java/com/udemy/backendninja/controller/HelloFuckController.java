@@ -1,5 +1,8 @@
 package com.udemy.backendninja.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,14 +17,23 @@ public class HelloFuckController {
 	
 	@GetMapping("/world")
 	public String helloFuck(Model model) {
-		model.addAttribute("person",new Person("Ene","30"));
+		model.addAttribute("people",getPeople());
 		return "helloworld";
 	}
 	
 	@GetMapping("/worldv")
 	public ModelAndView modelandview() {
 		ModelAndView mav = new	ModelAndView("helloworld");
-		mav.addObject("person",new Person("Ano","69"));
+		mav.addObject("people",getPeople());
 		return mav;
 	}
+
+	private List<Person> getPeople(){
+		List<Person> people = new ArrayList<>();
+		people.add(new Person("jon snow","40"));
+		people.add(new Person("ned stark","50"));
+		people.add(new Person("jajaja","60"));
+		return people;
+	}
+
 }
