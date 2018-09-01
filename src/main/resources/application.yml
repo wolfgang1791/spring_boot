@@ -1,2 +1,4 @@
 banner:
   location: classpath:/example/banner.txt
+
+  
