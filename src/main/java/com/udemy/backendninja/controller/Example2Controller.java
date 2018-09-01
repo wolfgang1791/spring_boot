@@ -2,6 +2,7 @@ package com.udemy.backendninja.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,5 +19,14 @@ public class Example2Controller {
 		mav.addObject("nm_in_model",name);
 		return mav;
 	}
+	
+	@GetMapping("/request2/{nm}")
+	public ModelAndView request2(@PathVariable("nm") String nombre) {
+		ModelAndView mav = new ModelAndView(view2);
+		mav.addObject("nm_in_model",nombre);
+		System.out.println("Weed");
+		return mav;
+	}
+	
 	
 }
