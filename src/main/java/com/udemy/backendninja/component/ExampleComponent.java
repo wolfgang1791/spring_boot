@@ -1,4 +1,4 @@
-package com.udemy.backendninja.component;
+ package com.udemy.backendninja.component;
 
 import org.springframework.stereotype.Component;
 import org.apache.commons.logging.Log;
