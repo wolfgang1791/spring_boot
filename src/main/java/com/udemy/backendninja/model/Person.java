@@ -1,7 +1,15 @@
 package com.udemy.backendninja.model;
 
+import javax.validation.constraints.*;
+
 public class Person {
+	
+	@NotNull
+	@Size(min=2,max=6)
 	private String name;
+	
+	@NotNull
+	@Min(18)
 	private String age;
 	
 	public String getName() {

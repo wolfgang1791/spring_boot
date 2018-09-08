@@ -1,9 +1,12 @@
 package com.udemy.backendninja.controller;
 
+import javax.validation.Valid;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,10 +51,17 @@ public class Example3Controller {
 	}
 	
 	@PostMapping("/addperson")
-	public ModelAndView addperson(@ModelAttribute("person") Person person) {
+	public ModelAndView addperson(@Valid @ModelAttribute("person") Person person,BindingResult bindingresult) { // los incumplimientos de la validacion
+		
+		ModelAndView mav = new ModelAndView();
 		LOGGER.info("METHOD: 'addperson' -- PARAMS:'"+person+"'");
-		ModelAndView mav = new ModelAndView(result_view);
-		mav.addObject("person",person);
+		if(bindingresult.hasErrors()) {
+			mav.setViewName(view3);
+		}
+		else {
+			mav.setViewName(result_view);
+			mav.addObject("person",person);
+		}
 		LOGGER.info("TEMPLATE: "+result_view+" -- DATA:'"+person+"'");
 		return mav;
 	}
