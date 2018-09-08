@@ -13,8 +13,10 @@ public class Course {
 	@Column(name="id")
 	private int id;
 	
+	@Override
 	public String toString() {
-		return description.toString();
+		return "Course [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", hours="
+				+ hours + "]";
 	}
 	@Column(name="name")
 	private String name;

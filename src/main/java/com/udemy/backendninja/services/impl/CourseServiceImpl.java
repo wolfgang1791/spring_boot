@@ -32,7 +32,7 @@ public class CourseServiceImpl implements CourseService{
 
 	@Override
 	public Course AddCourse(Course course) {
-		LOGGER.info("call: addCourse() --params: "+course.toString());
+		LOGGER.info("call: addCourse() --: "+course.toString());
 		return coursejparepository.save(course);
 	}
 

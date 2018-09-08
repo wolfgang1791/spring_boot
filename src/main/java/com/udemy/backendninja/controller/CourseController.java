@@ -32,15 +32,15 @@ public class CourseController {
 		
 		ModelAndView mav = new ModelAndView(COURSE_VIEW);
 		mav.addObject("courses",courseservice.ListAllCourse());
+		mav.addObject("course",new Course());
 		return mav;
 	}
 	
-	@PostMapping("/addCourse")
+	@PostMapping("/addcourse")
 	public String addCourse(@ModelAttribute("course") Course course) {
 		
-		LOGGER.info("call: addCourse() --param:"+course.toString());
-		
-		courseservice.ListAllCourse();
+		LOGGER.info("call: addCourse() --param:"+course.toString());	
+		courseservice.AddCourse(course);
 		return "redirect:/course/list";
 	}
 
