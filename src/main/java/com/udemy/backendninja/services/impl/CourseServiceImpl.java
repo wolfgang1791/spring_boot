@@ -2,6 +2,8 @@ package com.udemy.backendninja.services.impl;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -12,7 +14,10 @@ import com.udemy.backendninja.services.CourseService;
 
 @Service("courseServiceImplementation")
 public class CourseServiceImpl implements CourseService{
-
+	
+	
+	private static final Log LOGGER = LogFactory.getLog(CourseServiceImpl.class);
+	
 	@Autowired
 	@Qualifier("courseJpaRepository")
 	private CourseJpaRepository coursejparepository;
@@ -21,12 +26,13 @@ public class CourseServiceImpl implements CourseService{
 	
 	@Override
 	public List<Course> ListAllCourse() {
-		coursejparepository.findAll();
-		return null;
+		LOGGER.info("call: ListAllCourse()");
+		return coursejparepository.findAll();
 	}
 
 	@Override
 	public Course AddCourse(Course course) {
+		LOGGER.info("call: addCourse() --params: "+course.toString());
 		return coursejparepository.save(course);
 	}
 

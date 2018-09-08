@@ -13,6 +13,9 @@ public class Course {
 	@Column(name="id")
 	private int id;
 	
+	public String toString() {
+		return description.toString();
+	}
 	@Column(name="name")
 	private String name;
 	
