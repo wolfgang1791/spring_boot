@@ -13,11 +13,6 @@ public class Course {
 	@Column(name="id")
 	private int id;
 	
-	@Override
-	public String toString() {
-		return "Course [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", hours="
-				+ hours + "]";
-	}
 	@Column(name="name")
 	private String name;
 	
@@ -31,6 +26,14 @@ public class Course {
 	private int hours;
 	
 	public Course() {}
+	
+	@Override
+	public String toString() {
+		return "Course [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", hours="
+				+ hours + "]";
+	}
+	
+	
 	
 	public Course(int id, String name, String description, int price, int hours) {
 		super();

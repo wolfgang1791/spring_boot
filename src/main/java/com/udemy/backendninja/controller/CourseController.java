@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.udemy.backendninja.converter.CourseConverter;
 import com.udemy.backendninja.entity.Course;
+import com.udemy.backendninja.model.CourseModel;
 import com.udemy.backendninja.services.CourseService;
 
 
@@ -25,6 +27,12 @@ public class CourseController {
 	@Qualifier("courseServiceImplementation")
 	private CourseService courseservice;
 	
+	
+	@Autowired
+	@Qualifier("courseConverter")
+	private CourseConverter courseconverter;
+	
+	
 	@RequestMapping("/list")
 	public ModelAndView listAllCourse() {
 		
@@ -32,15 +40,15 @@ public class CourseController {
 		
 		ModelAndView mav = new ModelAndView(COURSE_VIEW);
 		mav.addObject("courses",courseservice.ListAllCourse());
-		mav.addObject("course",new Course());
+		mav.addObject("course",courseconverter.EntityToModel(new Course()));
 		return mav;
 	}
 	
 	@PostMapping("/addcourse")
-	public String addCourse(@ModelAttribute("course") Course course) {
+	public String addCourse(@ModelAttribute("course") CourseModel course) {
 		
-		LOGGER.info("call: addCourse() --param:"+course.toString());	
-		courseservice.AddCourse(course);
+		LOGGER.info("call: addCourse() --param:"+course.toString()+" "+course.getDescription());	
+		courseservice.AddCourse(courseconverter.ModelToEntity(course));
 		return "redirect:/course/list";
 	}
 

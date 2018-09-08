@@ -19,7 +19,13 @@ public class CourseModel {
 	}
 
 	
-	
+
+	@Override
+	public String toString() {
+		return "CourseModel [name=" + name + ", description=" + description + ", price=" + price + ", hours=" + hours
+				+ "]";
+	}
+
 	public int getPrice() {
 		return price;
 	}
